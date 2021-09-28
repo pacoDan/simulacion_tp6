@@ -1,6 +1,6 @@
 package ejemplo;
 
-public class Ejemplo1 {
+public class Principal {
 	public static double T,TPLL,TPV,TF;
 	public static  void condicionesIniciales() {
 		T=0;
@@ -19,12 +19,12 @@ public class Ejemplo1 {
 		
 	}
 	public static void main(String[] args) {
+		condicionesIniciales();
 		while(T<TF) {
-			condicionesIniciales();
-			System.out.println(TPV);
-			TPV=T;
-			T=10;
-			System.out.println(TPV+";"+T);
+//			System.out.println(TPV);
+//			TPV=T;
+//			T=10;
+//			System.out.println(TPV+";"+T);
 			if(TPLL<TPV)eventoLlegadaDePaciente();
 			else eventoVisitaMedico();
 		}
