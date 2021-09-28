@@ -13,7 +13,7 @@ TF = 9600
 t = 0
 tpll = 0
 tpv = 9600
-pac_rec = 0
+pac_rec = 0 ##PCR, Pacientes Con Receta
 nt = 0
 ns = 0
 sto = 0
@@ -21,7 +21,7 @@ ito = 0
 atendidos = 0
 tat = 0
 nat = 0
-cant_arr = 0
+cant_arr = 0 ## arrepentidos
 
 while t<TF:
     if tpll<=tpv:
