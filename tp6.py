@@ -5,8 +5,9 @@ from math import e, modf
 ln = np.log
 
 
-N = 2
+n =0
 TF = 14405 #30 dias
+
 #TA = 10*random.random()+20
 #IA = ln(-random.random()+1)/-0.0001
 
@@ -21,11 +22,10 @@ def arrepentimiento(personas):
         else:
             return False
 
-
 def simular():
     t = 0
     tpll = 0
-    tpv = 8*60*10
+    tpv = 8*60*31/n
     inicial_tiempo = tpv
     pac_rec = 0
     nt = 0
@@ -38,6 +38,7 @@ def simular():
     nat = 0
     cant_arr = 0
     aux = tpv
+    encolados=0
     while t<TF:
         if tpll<=tpv:
             t = tpll
@@ -49,6 +50,7 @@ def simular():
             else:
                 if not(arrepentimiento(ns)):
                     ns = ns + 1
+                    encolados=encolados+1
                     pac_oftal = pac_oftal + 1
                     ito = t
                     if ns == 1:
@@ -66,11 +68,15 @@ def simular():
                 tat = tat + ta
                 sto = sto + (t-ito)
                 ito = t
+                encolados=encolados-1
                 if atendidos == 12 or t>(tpv-tat)+inicial_tiempo:
                     atendidos = 0
-                    nat = nat + ns
+                    nat = nat + encolados
+                    encolados=0
                     tpv = (tpv - tat ) + inicial_tiempo
-                    
+                    if(ns==0):
+                       aux = tpv
+                       tpv = 9999999999 
             else:
                 aux = tpv
                 tpv = 9999999999
@@ -89,9 +95,9 @@ def resultados(nt,ns,pac_oftal,SARR,PTO,nat):
 if __name__ == "__main__":
 
     # Parametros
-    N = int(sys.argv[1])
+    n= int(sys.argv[1])
     NT,NS,PAC_OFTAL,SARR,PTO,NAT=simular()
-    print('con N= ',N)
+    print('con N= ',n)
     resultados( NT,NS,PAC_OFTAL,SARR,PTO,NAT)
     
     
